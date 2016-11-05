@@ -11,7 +11,7 @@ class HomeView(TemplateView):
     def get_context_data(self,**kwargs):
         context = super(HomeView,self).get_context_data(**kwargs)
         my_instanse = create_instanse()
-        context['my_instanse'] = my_instanse
+        context['my_instanse'] = MyInfo.objects.get(pk = 1)
         return context
 
 
