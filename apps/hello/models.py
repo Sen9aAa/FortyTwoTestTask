@@ -8,3 +8,6 @@ class MyInfo(models.Model):
 	bio = models.TextField(blank = True)
 	birthday = models.DateField()
 
+	def __unicode__(self):
+		return '%s %s'%(self.name,self.surname)
+
