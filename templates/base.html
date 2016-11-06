@@ -40,14 +40,8 @@
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-    <div style="margin: 4%;font-size: 150%;">
-      <h1 style="margin-left: 40%">Hello world</h1>
-      <p><strong>Name</strong> : {{ my_instanse.name }}</p>
-      <p><strong>Surname</strong> : {{ my_instanse.surname }}</p>
-      <p><strong>Contact</strong> : {{ my_instanse.contacts }}</p>
-      <p><strong>About me</strong> :I am very good human yea</p>
-      <p><strong>Date of birth</strong> : {{ my_instanse.birthday }}</p>
-    </div>
+    {% block content %}
+    {% endblock %}
     <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
   </body>
 </html>
