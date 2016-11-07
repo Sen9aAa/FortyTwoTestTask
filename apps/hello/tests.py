@@ -8,6 +8,14 @@ from django.core.urlresolvers import reverse
 
 
 class SomeTests(TestCase):
+
+    def create_instance(self):
+        self.info = MyInfo.objects.create(
+                                         name = 'Test',surname = 'Only a test',
+                                         contacts = "test31@gmail.com",
+                                         birthday = date(1990,02,21)
+                                         )
+
     def test_math(self):
         "put docstrings in your tests"
         assert(2 + 2 == 4)
@@ -18,14 +26,12 @@ class SomeTests(TestCase):
         return self.assertEqual(response.status_code,200)
 
     def test_models(self):
-        info = MyInfo.objects.create(name = 'Test',surname = 'Only a test',
-                                    contacts = "test31@gmail.com",birthday = date(1990,02,21))
+        self.create_instance() 
         return self.assertEqual(MyInfo.objects.all().count(),2)
 
     def test_views(self):
-        info = MyInfo.objects.create(name = 'Test',surname = 'Only a test',
-                                    contacts = "test@gmail.com",birthday = date(1990,02,21))
+        self.create_instance()
         response = self.client.get('/')
 
         self.assertEqual(response.status_code, 200)
-        self.assertIn(info.name,response.content)
+        self.assertIn(self.info.name,response.content)
