@@ -11,8 +11,12 @@
     <title>42 cofee cups</title>
 
     <!-- Bootstrap core CSS -->
+
     <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static "css/screen.css" %}">
+    <script type="text/javascript">
+      var x=[];
+    </script>
   </head>
 
   <body>
@@ -26,7 +30,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">42 cofy cups Test</a>
+          <a class="navbar-brand" href="{% url 'home' %}">42 cofy cups Test</a>
+          {% block title %}{% endblock %}
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
@@ -43,6 +48,7 @@
     </nav>
     {% block content %}
     {% endblock %}
+    <script src="{% static "bootstrap/js/jQuery.js" %}"></script>
     <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
   </body>
 </html>

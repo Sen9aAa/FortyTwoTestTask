@@ -4,4 +4,5 @@ from django.db import models
 class RequestHistory(models.Model):
 	request_method = models.CharField(max_length = 200)
 	request_time = models.DateTimeField(auto_now_add = True)
-	request_lenght = models.CharField(max_length = 200)
+	request_lenght = models.CharField(max_length = 200,blank = True)
+	request_status = models.IntegerField(default = 0)

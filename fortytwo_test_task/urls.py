@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
 from apps.hello.views import HomeView
-from apps.requests_history.views import RequestHistory
+from apps.requests_history.views import MyRequestHistory
 admin.autodiscover()
 
 
@@ -14,5 +14,5 @@ urlpatterns = patterns(
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$',HomeView.as_view(),name='home'),
-    url(r'^request_history$',RequestHistory.as_view(),name = 'request_history'),
-)
+    url(r'^request_history$',MyRequestHistory.as_view(),name = 'request_history'),
+    )
