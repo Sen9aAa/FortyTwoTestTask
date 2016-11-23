@@ -16,7 +16,7 @@
     <tbody>
     {% for req in request_history_objects %} 
       <tr> 
-        <th scope="row">{{ cons|add:1 }}</th> 
+        <th scope="row">{{ forloop.counter }}</th> 
         <td>{{ req.request_method }}</td> 
         <td>{{ req.request_lenght }}</td>
         <td>{{ req.request_time }}</td> 
