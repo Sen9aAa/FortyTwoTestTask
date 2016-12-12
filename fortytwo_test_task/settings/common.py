@@ -44,6 +44,7 @@ INSTALLED_APPS = (
 
     'apps.hello',
     'apps.requests_history',
+    'apps.login',
 )
 
 MIDDLEWARE_CLASSES = (
