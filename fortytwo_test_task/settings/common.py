@@ -57,6 +57,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+
 ROOT_URLCONF = 'fortytwo_test_task.urls'
 
 WSGI_APPLICATION = 'fortytwo_test_task.wsgi.application'

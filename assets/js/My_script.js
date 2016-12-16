@@ -3,7 +3,7 @@ $(document).on('submit','#my_registration_form',function(e){
 
   $.ajax({
     type:"POST",
-    url:"/my_login",
+    url:"/my_registration",
     data:{
       username:$('#id_username').val(),
       password1:$('#id_password1').val(),
