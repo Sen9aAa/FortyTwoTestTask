@@ -15,6 +15,8 @@ def my_registration(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password2']
             form.save()
+            user = auth.authenticate(username = username,password = password)
+            auth.login(request,user)
             return HttpResponse(json.dumps({'new_user':'New User has been created'}),content_type ="application/json")
         if form.errors:
             my_errors = form.errors
