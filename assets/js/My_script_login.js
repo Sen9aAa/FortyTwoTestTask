@@ -13,6 +13,9 @@ $('#my_login').on('click','#my_login_submit',function(e){
       if(json.username){
         if(!alert('Welkome '+json.username)){document.location = 'http://127.0.0.1:8000/'};
       };
+      if(json.user_error){
+        alert(json.user_error);
+      }
     },
   });
 })
