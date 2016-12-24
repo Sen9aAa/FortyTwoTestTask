@@ -6,17 +6,20 @@
 
 
 {% block content %}
+    <h1 id="new" style="margin:4%">Hello world</h1>
+    {% for c in my_instanse %}
     <div style="margin: 4%;font-size: 150%;">
-      <h1 id="new" style="margin-left: 40%">Hello world</h1>
-      <p><strong>Name</strong> : {{ my_instanse.name }}</p>
-      <p><strong>Surname</strong> : {{ my_instanse.surname }}</p>
-      <p><strong>Contact</strong> : {{ my_instanse.contacts }}</p>
-      <p><strong>About me</strong> :{{ my_instanse.bio }}</p>
-      <p><strong>Date of birth</strong> : {{ my_instanse.birthday }}</p>
+      <p><strong>Name</strong> : {{ c.name }}</p>
+      <p><strong>Surname</strong> : {{ c.surname }}</p>
+      <p><strong>Contact</strong> : {{ c.contacts }}</p>
+      <p><strong>About me</strong> :{{ c.bio }}</p>
+      <p><strong>Date of birth</strong> : {{ c.birthday }}</p>
       {% comment %}
       <form action="{% url 'request_history' %}">
         <input type="submit" name="To request" value="To request {{ requests_number }}">
       </form>
       {% endcomment %}
+    _____________________________________________________________________________________
     </div>
+    {% endfor %}
 {% endblock %}

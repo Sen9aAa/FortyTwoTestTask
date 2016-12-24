@@ -8,6 +8,7 @@ $(document).on('submit','#my_registration_form',function(e){
       username:$('#id_username').val(),
       password1:$('#id_password1').val(),
       password2:$('#id_password2').val(),
+      email:$('#id_email').val(),
       csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
     },
     success:function(json){
@@ -61,3 +62,22 @@ $(document).on('submit','#my_registration_form',function(e){
     },
   });
 });*/  
+
+/*$(document).ready(function() { 
+    var options = {
+      beforesubmit: showRequest,
+      success : showResponse,
+      url : '/add_data',
+      type : 'POST'
+    };
+    $(#'my_add_info').submit(function(){
+      $(this).ajaxSubmit(options);
+      return false;
+    });
+});
+var formData = {name:$('id_name').val()}
+
+function showRequest(formData,options){
+  alert('About to submit')
+  return true
+}>*/

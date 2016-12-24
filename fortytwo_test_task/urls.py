@@ -18,7 +18,7 @@ urlpatterns = patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$',HomeView.as_view(),name='home'),
     url(r'^request_history$',MyRequestHistory.as_view(),name = 'request_history'),
-    #url(r'^registration$',MyLoginView.as_view(),name = 'registration'),
+    url(r'^add_data$','apps.hello.views.my_add_data_form',name = 'add_data'),    
     url(r'^my_registration$','apps.login.views.my_registration',name = 'my_registration'),
     url(r'^my_login$','apps.login.views.my_login',name = 'my_login'),
     url(r'^my_logout$','apps.login.views.my_logout',name = 'my_logout'),
