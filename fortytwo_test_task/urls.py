@@ -4,6 +4,8 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from apps.hello.views import HomeView
 from apps.requests_history.views import MyRequestHistory
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 admin.autodiscover()
@@ -22,4 +24,8 @@ urlpatterns = patterns(
     url(r'^my_registration$','apps.login.views.my_registration',name = 'my_registration'),
     url(r'^my_login$','apps.login.views.my_login',name = 'my_login'),
     url(r'^my_logout$','apps.login.views.my_logout',name = 'my_logout'),
+    url(r'^my_delete/(?P<my_info_id>\d+)/$','apps.hello.views.my_delete',name = 'my_delete'),
+    url(r'^my_change/(?P<info_id>\d+)/$','apps.hello.views.my_add_data_form',name = 'my_change'),
     )
+urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
+

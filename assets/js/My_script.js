@@ -1,20 +1,22 @@
-$(document).on('submit','#my_registration_form',function(e){
+$(document).on('submit','#my_add_info',function(e){
   e.preventDefault();
 
   $.ajax({
     type:"POST",
-    url:"/my_registration",
+    url:"/add_data",
     data:{
-      username:$('#id_username').val(),
-      password1:$('#id_password1').val(),
-      password2:$('#id_password2').val(),
-      email:$('#id_email').val(),
+      name:$('#id_name').val(),
+      surname:$('#id_surname').val(),
+      contacts:$('#id_contacts').val(),
+      bio:$('#id_bio').val(),
+      birthday:$('#id_birthday').val(),
+      photo:$('input.form-control').val(),
       csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
     },
     success:function(json){
       my_error_add(json);
-      if(json.new_user){
-        if(!alert(json.new_user)){document.location = 'http://127.0.0.1:8000/'};
+      if(json.ok_message){
+        if(!alert(json.ok_message)){document.location = 'http://127.0.0.1:8000/'};
       };           
     },
   });

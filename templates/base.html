@@ -10,11 +10,23 @@
     <meta name="author" content="">
     <title>42 cofee cups</title>
 
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({publisher: "48952996-13d3-49f3-9854-e6438041a4b3", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+    <link href="{% static "bootstrap/css/bootstrap-theme.min.css" %}" rel="stylesheet">
+
+
+
     <!-- Bootstrap core CSS -->
 
     <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
     <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static "css/screen.css" %}">
+
+    {% if form %}
+    {{ form.media }}
+    {% endif %}
   </head>
 
   <body>
@@ -34,20 +46,17 @@
           <a class="navbar-brand" href="{% url 'add_data' %}">Add Data</a>
           {% endif %}
         </div>
-        <div>
-          <form class="navbar-form navbar-right" action="{% url 'my_registration' %}">
-            <button type="submit" class="btn btn-success">Registred</button>
-          </form>
-        </div>
+       
         <div id="navbar" class="navbar-collapse collapse">
         {% if user.is_authenticated %}
           <form id="my_logout" class="navbar-form navbar-right" method="post">
               {% csrf_token %}
               <button id="my_logout_submit" type="submit" class="btn btn-success">Sign off {{ user.username }}</button>
+              <a href="{% url 'my_registration' %}" class="btn btn-success">Registred</a>
           </form>
-        {% else %}
+        {% else %}          
           <form id="my_login" class="navbar-form navbar-right" method="post">
-          {% csrf_token %}
+          {% csrf_token %}            
             <div class="form-group">
               <input type="text" placeholder="Nick name" class="form-control">
             </div>
@@ -55,9 +64,11 @@
               <input type="password" placeholder="Password" class="form-control">
             </div>
             <button id="my_login_submit" type="submit" class="btn btn-success">Sign in</button>
+            <a href="{% url 'my_registration' %}" class="btn btn-success">Registred</a>
           </form>
+          {% endif %}
+
         </div><!--/.navbar-collapse -->
-        {% endif %}
       </div>
     </nav>
     {% block content %}
@@ -67,7 +78,11 @@
     <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
     <script src="{% static "js/My_script_login.js" %}"></script>
     <script src="{% static "js/my_function.js" %}"></script>
-    <script src="{% static "js/my_add_script.js" %}"></script>
     <script src="{% static "js/form/jquery.form.js" %}"></script>
+    <script src="{% static "bootstrap/js/bootstrap-filestyle.js" %}"></script>
+    <script src="{% static "bootstrap/js/bootstrap-filestyle.min.js" %}"></script>
+
+
+
   </body>
 </html>

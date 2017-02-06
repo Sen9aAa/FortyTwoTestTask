@@ -18,7 +18,6 @@ function showRequest(formData,jqForm,options){
 }
 function showResponse(json){
   $('body').removeClass("loading");
-  my_error_add(json);
   if (json.ok_message){
     if(!alert(json.ok_message)){document.location = 'http://127.0.0.1:8000/'};
   };

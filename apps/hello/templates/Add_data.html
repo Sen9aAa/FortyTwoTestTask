@@ -5,12 +5,179 @@
 {% block content %}
 <div class="table_vidstyp">
   <h1>New Info</h1>
-  <form id = 'my_add_info' class="form-horizontal" method="post">
+  <form id = 'my_add_info' class="form-group" method="post" enctype="multipart/form-data">
   {% csrf_token %}
-  {{form.as_p}}
-  <div class="col-sm-offset-2 col-sm-10">
+  <input id = "img_clear_id" type = "hidden" name = "img_clear" value = "0"/>
+  <p>
+  	<label  for="{{ form.name.id_for_label }}">Name:</label>
+  	{{ form.name }}
+  </p>
+  <p>
+  	<label  for="{{ form.surname.id_for_label }}">Surname:</label>
+  	{{ form.surname }}
+  </p>
+  <p>
+  	<label  for="{{ form.contacts.id_for_label }}">Email:</label>
+  	{{ form.contacts }}
+  </p>
+  <p>
+  	<label  for="{{ form.bio.id_for_label }}">About your self:</label>
+  	{{ form.bio }}
+  </p>
+  	{{ form.photo }}
+  	{{ form.birthday }}
+    <div class="col-sm-offset-2 col-sm-10">
     <input type="submit" value="Save" class="btn btn-success">
   </div>
 </form>
 </div>
+<script type="text/javascript">
+  {% if my_id %}
+    var my_url = '{% url "my_change" my_id %}'
+  {% else %}
+    var my_url = '{% url "add_data" %}'
+  {% endif %}
+
+  $(document).ready(function(){ 
+    var options = {
+      url : my_url,
+      dataType:'json',
+      beforeSubmit: showRequest,
+      success : showResponse,
+    };
+    $('#my_add_info').submit(function(){
+      $(this).ajaxSubmit(options);
+      return false;
+    });
+  });
+
+
+  function showRequest(formData,jqForm,options){
+  $('body').addClass("loading"); 
+  return true
+  }
+  function showResponse(json){
+  $('body').removeClass("loading");
+  if (json.name){
+    $('#id_name').parent().attr('id','name_error');
+      for(var i = 0;i<json.name.length;i++){
+        if ($('ul#name_error_'+[i]).text()){  
+          $('ul#name_error_'+[i]).replaceWith("<ul class = 'error'" +"id=name_error_"+[i]+"><li>"+json.name[i]+"</li></ul>")
+        }else{
+          $('#id_name').parent().prepend("<ul class = 'error'" +"id=name_error_"+[i]+"><li>"+json.name[i]+"</li></ul>");
+          };
+        };
+  }else{
+    $('p#name_error ul').replaceWith('');
+  };
+  if(json.surname){
+    $('#id_surname').parent().attr('id','surname_error');
+      for(var i = 0;i<json.surname.length;i++){
+        if ($('ul#surname_error_'+[i]).text()){  
+          $('ul#surname_error_'+[i]).replaceWith("<ul class = 'error'" +"id=surname_error_"+[i]+"><li>"+json.surname[i]+"</li></ul>")
+        }else{
+          $('#id_surname').parent().prepend("<ul class = 'error'" +"id=surname_error_"+[i]+"><li>"+json.surname[i]+"</li></ul>");
+        };
+      };
+  }else{
+    $('p#surname_error ul').replaceWith('');
+  };
+  if(json.contacts){
+    $('#id_contacts').parent().attr('id','contacts_error');
+      for(var i = 0;i<json.contacts.length;i++){
+        if ($('ul#contacts_error_'+[i]).text()){  
+          $('ul#contacts_error_'+[i]).replaceWith("<ul class = 'error'" +"id=contacts_error_"+[i]+"><li>"+json.contacts[i]+"</li></ul>")
+        }else{
+          $('#id_contacts').parent().prepend("<ul class = 'error'" +"id=contacts_error_"+[i]+"><li>"+json.contacts[i]+"</li></ul>");
+        };
+      };
+  }else{
+    $('p#contacts_error ul').replaceWith('');
+  };
+  if(json.bio){
+    $('#id_bio').parent().attr('id','bio_error');
+      for(var i = 0;i<json.bio.length;i++){
+        if ($('ul#bio_error_'+[i]).text()){  
+          $('ul#bio_error_'+[i]).replaceWith("<ul class = 'error'" +"id=bio_error_"+[i]+"><li>"+json.bio[i]+"</li></ul>")
+        }else{
+          $('#id_bio').parent().prepend("<ul class = 'error'" +"id=bio_error_"+[i]+"><li>"+json.bio[i]+"</li></ul>");
+        };
+      };
+  }else{
+    $('p#bio_error ul').replaceWith('');
+  };
+  if(json.bio){
+    $('#id_bio').parent().attr('id','bio_error');
+      for(var i = 0;i<json.bio.length;i++){
+        if ($('ul#bio_error_'+[i]).text()){  
+          $('ul#bio_error_'+[i]).replaceWith("<ul class = 'error'" +"id=bio_error_"+[i]+"><li>"+json.bio[i]+"</li></ul>")
+        }else{
+          $('#id_bio').parent().prepend("<ul class = 'error'" +"id=bio_error_"+[i]+"><li>"+json.bio[i]+"</li></ul>");
+        };
+      };
+  }else{
+    $('p#bio_error ul').replaceWith('');
+  };
+  if(json.birthday){
+    $('#id_birthday').parent().attr('id','birthday_error');
+      for(var i = 0;i<json.birthday.length;i++){
+        if ($('ul#birthday_error_'+[i]).text()){  
+          $('ul#birthday_error_'+[i]).replaceWith("<ul class = 'error'" +"id=birthday_error_"+[i]+"><li>"+json.birthday[i]+"</li></ul>")
+        }else{
+          $('#id_birthday').parent().prepend("<ul class = 'error'" +"id=birthday_error_"+[i]+"><li>"+json.birthday[i]+"</li></ul>");
+        };
+      };
+  }else{
+    $('p#birthday_error ul').replaceWith('');
+  };
+  if(json.photo){
+      for(var i = 0;i<json.photo.length;i++){
+        if ($('ul#photo_error_'+[i]).text()){  
+          $('ul#photo_error_'+[i]).replaceWith("<ul class = 'error'" +"id=photo_error_"+[i]+"><li>"+json.photo[i]+"</li></ul>")
+        }else{
+          $('#kv-avatar-errors-1').attr("style","width:800px").prepend("<ul class = 'error'" +"id=photo_error_"+[i]+"><li>"+json.photo[i]+"</li></ul>");
+        };
+      };
+  }else{
+    $('#kv-avatar-errors-1 ul').replaceWith('').attr("style","display:none");
+  };
+  if (json.ok_message){
+    if(!alert(json.ok_message)){document.location = 'http://127.0.0.1:8000/'};
+  };
+  };
+
+  var btnCust = '<button type="button" class="btn btn-default" title="Add picture tags" ' + 
+    'onclick="me_clear()">' +
+    '<i class="glyphicon glyphicon-tag"></i>' +
+    '</button>'; 
+    
+  $("#id_photo").fileinput({
+    overwriteInitial: true,
+    maxFileSize: 1500,
+    showClose: false,
+    showCaption: false,
+    browseLabel: '',
+    removeLabel: '',
+    browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
+    removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+    removeTitle: 'Cancel or reset changes',
+    elErrorContainer: '#kv-avatar-errors-1',
+    msgErrorClass: 'alert alert-block alert-danger',
+  {% if form.photo.value %}
+    defaultPreviewContent: '<img id = "id_img" src="/uploads/{{form.photo.value}}" alt="Your Avatar" style="width:160px">',
+  {% else %} 
+    defaultPreviewContent: '<img id = "id_img" src="http://www.placehold.it/200x200" alt="Your Avatar" style="width:160px">',
+  {% endif %}
+    layoutTemplates: {main2: '{preview} '+ btnCust + ' {remove} {browse}'},
+    allowedFileExtensions: ["jpg"]
+});
+  function me_clear(){
+      if ($('#img_clear_id').val() == 1){
+        $('#img_clear_id').replaceWith('<input id = "img_clear_id" type = "hidden" name = "img_clear" value = "0"/>');
+      }else{
+        $('#img_clear_id').replaceWith('<input id = "img_clear_id" type = "hidden" name = "img_clear" value = "1"/>');
+        alert('Your image will be deleted')
+      };      
+};
+</script>
 {% endblock %}

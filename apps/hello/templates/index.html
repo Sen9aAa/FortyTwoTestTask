@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block title %}
 <a class="navbar-brand"  href="{% url 'request_history' %}">New requests {{ requests_number }}</a>
 {% endblock %}
@@ -8,18 +8,26 @@
 {% block content %}
     <h1 id="new" style="margin:4%">Hello world</h1>
     {% for c in my_instanse %}
-    <div style="margin: 4%;font-size: 150%;">
+
+    <div class="my_div">
+    <div class="my_info">
       <p><strong>Name</strong> : {{ c.name }}</p>
       <p><strong>Surname</strong> : {{ c.surname }}</p>
       <p><strong>Contact</strong> : {{ c.contacts }}</p>
       <p><strong>About me</strong> :{{ c.bio }}</p>
       <p><strong>Date of birth</strong> : {{ c.birthday }}</p>
-      {% comment %}
-      <form action="{% url 'request_history' %}">
-        <input type="submit" name="To request" value="To request {{ requests_number }}">
+    {% if user.is_authenticated %}
+      <form action="{% url 'my_delete' c.id %}">
+        <input type="submit" name="To request" value="Delete" class="btn btn-success my_button_class">
       </form>
-      {% endcomment %}
-    _____________________________________________________________________________________
+      <a href="{% url 'my_change' c.id %}" class="btn btn-success">Change</a>
+    {% endif %}
+    </div>
+    {% if c.photo %}
+      <span class="my_info"><img src="{{ c.photo.url }}"/></span>
+    {% else %}
+       <span class="my_info"><img src="http://www.placehold.it/200x200"/></span>
+    {% endif %}
     </div>
     {% endfor %}
 {% endblock %}

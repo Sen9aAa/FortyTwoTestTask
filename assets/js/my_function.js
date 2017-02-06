@@ -6,8 +6,7 @@ function my_error_add(obj){
             var my_p = $('p');
             for (var e =0;e<my_p.length;e++){
               if(my_error_list.indexOf(my_p[e].id) == -1){
-                my_p[e].id = e;
-                $('p#'+e+' ul').replaceWith('');
+                $(my_p[e]+' ul').replaceWith('');
               }else{
                   for (var y = 0;y<obj[error_keys].length;y++){
                       if ($('ul#'+error_keys+'_error_'+[y]).text()){

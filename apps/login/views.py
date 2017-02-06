@@ -30,7 +30,6 @@ def my_registration(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password2']
             email = request.POST.get('email','')
-            print (email)
             form.save()
             user = auth.authenticate(username = username,password = password)
             auth.login(request,user)

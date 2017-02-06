@@ -2,6 +2,56 @@
 	margin-top: 65px;
 	margin-left: 10px;
 }
+.center-block{
+	display: block;
+	margin-left: 0px;
+}
+
+.kv-avatar .file-preview-frame,.kv-avatar .file-preview-frame:hover {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+}
+.kv-avatar .file-input {
+    display: table-cell;
+    max-width: 220px;
+}
+
+h6.text-muted{
+	text-align: center;
+}
+
+
+html {
+	height:1000px;
+}
+
+.my_div{
+	display: table;
+	font-size: 20px;
+	border-bottom: 2px solid black;
+	line-height: 25px;
+	border-spacing:20px;
+}
+
+.my_button_class{
+	float: left;
+	margin-right: 10px;
+}
+
+div.my_div img{
+	display: table-cell;
+	vertical-align: middle;
+	margin-left:150px;
+}
+ 
+.my_info{
+	vertical-align: middle;
+	display: table-cell;
+	width: 700px;
+}
 
 .table_vidstyp h1 {
    margin-left:15px;
@@ -10,9 +60,84 @@
 .error{
 	color: red;
 }
-#my_registration_form input{
-   margin-left:auto;
+
+div.file-preview + button.btn.btn-default{
+	margin-left: 22px;
 }
+
+.img_remove_button{
+	background: blue;
+}
+
+#my_add_info p,
+.margin_block {
+	min-height: 30px;
+	margin-bottom: 10px;
+}
+#my_add_info p label,
+#my_registration_form p label,
+.form_class {
+	display: block;
+	float: left;
+	vertical-align: middle;
+	line-height: 30px;
+	width: 200px;
+	min-width: 150px;
+	padding-right: 20px;
+}
+#my_add_info p input, 
+#my_add_info p select,
+#my_add_info p textarea{
+	float: left;
+}
+#my_add_info p textarea{
+	max-height: 120px;
+	resize: none;
+}
+#my_add_info p:after{
+	visibility: hidden;
+	display: block;
+	content: "";
+	clear: both;
+	height: 0;
+}
+#my_add_info p .helptext{
+	display: block;
+	float: left;
+	margin-left: 20px;
+	line-height: 30px;
+}
+
+#my_add_info  p.input-group.date{
+	position: relative;
+}
+
+
+
+#my_add_info  p.input-group.date input, 
+#my_add_info  p.input-group.date span.input-group-addon{
+	display: block;
+	float: left;
+	width: 180px;
+	height: 30px;
+}
+#my_add_info  p.input-group.date span.input-group-addon{
+	width: 5%;
+}
+
+#my_add_info  p.input-group.date label{
+	display: block;
+	float: left;
+	vertical-align: middle;
+	line-height: 30px;
+	width: 200px;
+	min-width: 150px;
+	padding-right: 20px;
+}
+.input-group.date{
+	width: 700px
+}
+
 
 .modal {
     display:    none;
