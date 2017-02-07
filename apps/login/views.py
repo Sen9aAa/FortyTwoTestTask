@@ -36,6 +36,7 @@ def my_registration(request):
             return HttpResponse(json.dumps({'new_user':'New User has been created'}),content_type ="application/json")
         if form.errors:
             my_errors = form.errors
+            print(form.errors)
             return HttpResponse(json.dumps(my_errors),content_type="application/json")
     else:
         form = UserCreateForm()

@@ -1,27 +1,26 @@
-$(document).on('submit','#my_add_info',function(e){
+$(document).on('submit','#my_registration_form',function(e){
   e.preventDefault();
-
+ 
   $.ajax({
     type:"POST",
-    url:"/add_data",
+    url:"/my_registration",
     data:{
-      name:$('#id_name').val(),
-      surname:$('#id_surname').val(),
-      contacts:$('#id_contacts').val(),
-      bio:$('#id_bio').val(),
-      birthday:$('#id_birthday').val(),
-      photo:$('input.form-control').val(),
+      username:$('#id_username').val(),
+      password1:$('#id_password1').val(),
+      password2:$('#id_password2').val(),
+      email:$('#id_email').val(),
       csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
     },
+
     success:function(json){
       my_error_add(json);
-      if(json.ok_message){
-        if(!alert(json.ok_message)){document.location = 'http://127.0.0.1:8000/'};
+      if(json.new_user){
+        if(!alert(json.new_user)){document.location = 'http://127.0.0.1:8000/'};
       };           
     },
   });
 });
-      /*if(json.username){
+   /* if(json.username){
         console.log(Object.keys(json));
         $('#id_username').parent().attr('id','username_error');
         for(var i = 0;i<json.username.length;i++){

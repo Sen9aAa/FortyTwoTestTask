@@ -174,9 +174,11 @@
   function me_clear(){
       if ($('#img_clear_id').val() == 1){
         $('#img_clear_id').replaceWith('<input id = "img_clear_id" type = "hidden" name = "img_clear" value = "0"/>');
+        $('#kv-avatar-errors-1 ul').replaceWith('');
+        $('#kv-avatar-errors-1').attr("style","display:none");
       }else{
         $('#img_clear_id').replaceWith('<input id = "img_clear_id" type = "hidden" name = "img_clear" value = "1"/>');
-        alert('Your image will be deleted')
+        $('#kv-avatar-errors-1').attr("style","width:800px").prepend("<ul class = 'error'><li>Your avatar will be deleted</li></ul>")
       };      
 };
 </script>
