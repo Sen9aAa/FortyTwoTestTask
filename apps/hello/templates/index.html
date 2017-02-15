@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load my_tags %}
 
 {% block title %}
 <a class="navbar-brand"  href="{% url 'request_history' %}">New requests {{ requests_number }}</a>
@@ -16,11 +17,12 @@
       <p><strong>Contact</strong> : {{ c.contacts }}</p>
       <p><strong>About me</strong> :{{ c.bio }}</p>
       <p><strong>Date of birth</strong> : {{ c.birthday }}</p>
-    {% if user.is_authenticated %}
+    {% if user.is_superuser %}
       <form action="{% url 'my_delete' c.id %}">
         <input type="submit" name="To request" value="Delete" class="btn btn-success my_button_class">
       </form>
       <a href="{% url 'my_change' c.id %}" class="btn btn-success">Change</a>
+    <a href="{% edit_link c %}" class="btn btn-success">Too Django admin</a>
     {% endif %}
     </div>
     {% if c.photo %}
